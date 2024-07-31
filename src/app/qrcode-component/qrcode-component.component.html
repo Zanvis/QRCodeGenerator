@@ -1,5 +1,5 @@
-<section class="bg-gray-300 min-h-screen pt-12">
-    <div class="container mx-auto p-4 max-w-md bg-white rounded-lg shadow-lg">
+<section class="bg-gray-300 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto p-4 max-w-md bg-white rounded-lg shadow-lg mt-12">
         <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">QR Code Generator</h2>
         
         <div class="mb-4">
@@ -31,8 +31,20 @@
             Download QR Code
         </button>
 
-        <p class="text-sm text-gray-600 text-center">
+        <p class="text-sm text-gray-600 text-center mb-4">
             Scan this QR code to view the entered text
         </p>
+
+        <div class="mb-4">
+            <label for="file-upload" class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition duration-300 cursor-pointer text-center block">
+                Upload QR Code Image
+            </label>
+            <input id="file-upload" type="file" (change)="onFileSelected($event)" accept="image/png" class="hidden">
+        </div>
+
+        <div *ngIf="decodedText" class="mt-4 p-4 bg-gray-100 rounded-lg">
+            <h3 class="font-bold text-lg mb-2">Decoded QR Code:</h3>
+            <p>{{decodedText}}</p>
+        </div>
     </div>
 </section>

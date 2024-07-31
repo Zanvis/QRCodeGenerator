@@ -1,18 +1,20 @@
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { QRCodeComponent, QRCodeModule } from 'angularx-qrcode';
+import { QRCodeModule, QRCodeComponent } from 'angularx-qrcode';
+import jsQR from 'jsqr';
 
 @Component({
   selector: 'app-qrcode-component',
   standalone: true,
-  imports: [CommonModule, QRCodeModule, FormsModule],
+  imports: [CommonModule, FormsModule, QRCodeModule],
   templateUrl: './qrcode-component.component.html',
   styleUrl: './qrcode-component.component.css'
 })
 export class QRCodeComponentComponent {
   @ViewChild(QRCodeComponent) qrCode!: QRCodeComponent;
   qrData: string = '';
+  decodedText: string | null = null;
 
   downloadQRCode() {
     if (this.qrCode) {
@@ -28,6 +30,34 @@ export class QRCodeComponentComponent {
       }
     } else {
       console.error('QR Code component not found');
+    }
+  }
+
+  onFileSelected(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          if (ctx) {
+            ctx.drawImage(img, 0, 0);
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height);
+            if (code) {
+              this.decodedText = code.data;
+            } else {
+              this.decodedText = 'No QR code found in the image.';
+            }
+          }
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
     }
   }
 }
