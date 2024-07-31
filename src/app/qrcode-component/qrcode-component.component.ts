@@ -9,12 +9,13 @@ import jsQR from 'jsqr';
   standalone: true,
   imports: [CommonModule, FormsModule, QRCodeModule],
   templateUrl: './qrcode-component.component.html',
-  styleUrl: './qrcode-component.component.css'
+  styleUrls: ['./qrcode-component.component.css']
 })
 export class QRCodeComponentComponent {
   @ViewChild(QRCodeComponent) qrCode!: QRCodeComponent;
   qrData: string = '';
   decodedText: string | null = null;
+  copySuccess: boolean = false;
 
   downloadQRCode() {
     if (this.qrCode) {
@@ -58,6 +59,17 @@ export class QRCodeComponentComponent {
         img.src = e.target.result;
       };
       reader.readAsDataURL(file);
+    }
+  }
+
+  copyToClipboard() {
+    if (this.decodedText) {
+      navigator.clipboard.writeText(this.decodedText).then(() => {
+        this.copySuccess = true;
+        setTimeout(() => this.copySuccess = false, 3000);
+      }).catch(err => {
+        console.error('Could not copy text: ', err);
+      });
     }
   }
 }
