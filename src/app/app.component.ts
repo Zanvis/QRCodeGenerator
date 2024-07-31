@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { QRCodeComponentComponent } from './qrcode-component/qrcode-component.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, QRCodeComponentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

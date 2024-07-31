@@ -1,0 +1,39 @@
+<section class="bg-gray-300 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto p-4 max-w-md bg-white rounded-lg shadow-lg mt-12">
+        <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">QR Code Generator</h2>
+        
+        <div class="mb-4">
+            <input 
+                [(ngModel)]="qrData" 
+                placeholder="Enter text for QR code" 
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div class="bg-gray-100 p-4 rounded-lg shadow-inner flex justify-center items-center mb-4">
+            <qrcode
+                #qrCode
+                [qrdata]="qrData"
+                [allowEmptyString]="true"
+                [ariaLabel]="'QR Code image with the following content: ' + qrData"
+                [colorDark]="'#000000ff'"
+                [colorLight]="'#ffffffff'"
+                [elementType]="'canvas'"
+                [errorCorrectionLevel]="'M'"
+                [margin]="4"
+                [scale]="1"
+                [width]="250"
+            ></qrcode>
+        </div>
+
+        <button 
+            type="button" 
+            (click)="downloadQRCode()"
+            class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300 mb-4">
+            Download QR Code
+        </button>
+
+        <p class="text-sm text-gray-600 text-center">
+            Scan this QR code to view the entered text
+        </p>
+    </div>
+</section>
