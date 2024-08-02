@@ -35,7 +35,7 @@
             Download QR Code
         </button>
 
-        <div class="mb-2">
+        <!-- <div class="mb-2">
             <label for="file-upload" class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition duration-300 cursor-pointer text-center block">
                 Upload QR Code Image
             </label>
@@ -43,17 +43,36 @@
             <p class="mt-2 text-sm text-gray-600 text-center">
                 Upload a QR code image to decode its content. The system will analyze the uploaded image and display the decoded text below.
             </p>
+        </div> -->
+        <p class="text-sm text-gray-600 text-center mb-4">
+            Upload a QR code image to decode its content.
+        </p>
+        <div 
+            class="mb-4 border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:bg-gray-50 transition duration-300"
+            (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave($event)"
+            (drop)="onDrop($event)"
+            [class.bg-blue-50]="isDragging"
+            (click)="fileInput.click()"
+        >
+            <p class="text-gray-600">Drag and drop a QR code image here, or click to select</p>
+            <input 
+                #fileInput
+                type="file" 
+                (change)="onFileSelected($event)" 
+                accept="image/png,image/jpeg" 
+                class="hidden"
+            >
         </div>
-
         <div *ngIf="decodedText" class="mt-4 p-4 bg-gray-100 rounded-lg">
             <h3 class="font-bold text-lg mb-2">Decoded QR Code:</h3>
             <p class="break-words">{{decodedText}}</p>
             <button 
                 (click)="copyToClipboard()" 
-                class="w-full bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 mt-2 flex items-center justify-center">
+                class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 mt-4 flex items-center justify-center">
                 <i class="fas fa-copy mr-2"></i> Copy
             </button>
-            <p *ngIf="copySuccess" class="text-indigo-500 text-center mt-2">Text copied to clipboard!</p>
+            <p *ngIf="copySuccess" class="text-green-500 text-center mt-4">Text copied to clipboard!</p>
         </div>
     </div>
 </section>

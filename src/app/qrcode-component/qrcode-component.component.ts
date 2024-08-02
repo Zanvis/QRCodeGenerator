@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { QRCodeModule, QRCodeComponent } from 'angularx-qrcode';
@@ -13,9 +13,11 @@ import jsQR from 'jsqr';
 })
 export class QRCodeComponentComponent {
   @ViewChild(QRCodeComponent) qrCode!: QRCodeComponent;
+  @ViewChild('fileInput') fileInput!: ElementRef;
   qrData: string = '';
   decodedText: string | null = null;
   copySuccess: boolean = false;
+  isDragging = false;
 
   downloadQRCode() {
     if (this.qrCode) {
@@ -34,9 +36,38 @@ export class QRCodeComponentComponent {
     }
   }
 
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragging = true;
+  }
+
+  onDragLeave(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragging = false;
+  }
+
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragging = false;
+
+    const files = event.dataTransfer?.files;
+    if (files && files.length > 0) {
+      this.handleFile(files[0]);
+    }
+  }
+
   onFileSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
+      this.handleFile(file);
+    }
+  }
+
+  handleFile(file: File) {
+    if (file.type.match(/image\/(png|jpeg)/)) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         const img = new Image();
@@ -59,6 +90,8 @@ export class QRCodeComponentComponent {
         img.src = e.target.result;
       };
       reader.readAsDataURL(file);
+    } else {
+      this.decodedText = 'Please upload a valid image file (PNG or JPEG).';
     }
   }
 
