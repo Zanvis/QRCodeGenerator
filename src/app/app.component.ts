@@ -9,6 +9,7 @@ import { QRCodeComponentComponent } from './qrcode-component/qrcode-component.co
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
   title = 'QRCode';
 }
