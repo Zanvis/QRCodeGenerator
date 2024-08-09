@@ -148,11 +148,15 @@ export class QRCodeComponentComponent implements OnInit {
   }
 
   private addToHistory(item: QRCodeHistoryItem) {
-    this.qrCodeHistory.unshift(item);
+    const newItem = {
+        ...item,
+        id: this.generateUniqueId()
+    };
+    this.qrCodeHistory.unshift(newItem);
     // Limit history to last 10 items
     this.qrCodeHistory = this.qrCodeHistory.slice(0, 10);
     this.saveHistoryToLocalStorage();
-  }
+}
   
   private generateUniqueId(): string {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
@@ -188,6 +192,11 @@ export class QRCodeComponentComponent implements OnInit {
   
   clearHistory() {
     this.qrCodeHistory = [];
+    this.saveHistoryToLocalStorage();
+  }
+
+  deleteHistoryItem(id: string) {
+    this.qrCodeHistory = this.qrCodeHistory.filter(item => item.id !== id);
     this.saveHistoryToLocalStorage();
   }
 }

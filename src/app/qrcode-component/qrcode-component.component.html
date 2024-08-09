@@ -80,20 +80,25 @@
         <div class="flex justify-between items-center mb-4">
             <h3 class="text-xl font-bold">QR Code History</h3>
             <button (click)="toggleSidebar()" class="text-gray-600 hover:text-gray-800 transition duration-300">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times text-xl"></i>
             </button>
         </div>
         <div *ngIf="qrCodeHistory.length === 0" class="text-gray-600">
             No history available yet.
         </div>
-        <div *ngFor="let item of qrCodeHistory" class="mb-4 p-4 bg-gray-100 rounded-lg">
+        <div *ngFor="let item of qrCodeHistory" class="mb-4 p-4 bg-gray-100 rounded-lg relative">
+            <button 
+                (click)="deleteHistoryItem(item.id)" 
+                class="absolute top-2 right-2 text-red-500 hover:text-red-700 transition duration-300">
+                <i class="fas fa-times"></i>
+            </button>
             <p class="font-bold">{{ item.type === 'generated' ? 'Generated' : 'Scanned' }} QR Code</p>
             <p class="text-sm text-gray-600">{{ item.timestamp | date:'medium' }}</p>
             <p class="mt-2 break-words">{{ item.data }}</p>
             <button 
-            (click)="reuseHistoryItem(item)" 
-            class="mt-2 bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 transition duration-300">
-            Reuse
+                (click)="reuseHistoryItem(item)" 
+                class="mt-2 bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 transition duration-300">
+                Reuse
             </button>
         </div>
         <button *ngIf="qrCodeHistory.length > 0" 
