@@ -12,7 +12,7 @@
                     </button>
                 </div>
     
-                <div *ngIf="isDropdownOpen" class="z-50 absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <div *ngIf="isDropdownOpen" class="z-50 absolute right-0 mt-2 w-max rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                         <a *ngFor="let lang of languages" 
                             (click)="selectLanguage(lang.code)" 
@@ -29,7 +29,7 @@
             <h2 class="text-2xl font-bold text-center text-gray-800">{{ 'general.title' | translate}}</h2>
             <button 
                 (click)="toggleSidebar()" 
-                class="absolute right-0 bg-blue-500 text-white py-2 px-2 rounded-md hover:bg-blue-600 transition duration-300 z-50 w-10">
+                class="absolute right-0 bg-blue-500 text-white py-2 px-2 rounded-md hover:bg-blue-600 transition duration-300 w-10">
                 <i class="fas fa-history"></i>
             </button>
         </div>
