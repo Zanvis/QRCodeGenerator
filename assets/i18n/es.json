@@ -1,6 +1,6 @@
 {
     "general": {
-        "title": "Generador de Código QR",
+        "title": "Generador de QR",
         "enterText": "Ingrese texto para el código QR",
         "scanQR": "Escanee este código QR para ver el texto ingresado.",
         "downloadQR": "Descargar Código QR",
