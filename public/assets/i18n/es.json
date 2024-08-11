@@ -1,6 +1,6 @@
 {
     "general": {
-        "title": "Generador de QR",
+        "title": "Generador de Código QR",
         "enterText": "Ingrese texto para el código QR",
         "scanQR": "Escanee este código QR para ver el texto ingresado.",
         "downloadQR": "Descargar Código QR",
@@ -14,7 +14,8 @@
         "generated": "Generado",
         "scanned": "Escaneado",
         "reuse": "Reutilizar",
-        "clearHistory": "Borrar Historial"
+        "clearHistory": "Borrar Historial",
+        "historyButton": "Historia"
     },
     "errors": {
         "invalidFile": "Tipo de archivo no válido. Por favor, suba una imagen PNG o JPEG.",

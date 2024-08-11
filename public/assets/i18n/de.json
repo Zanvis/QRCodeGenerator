@@ -14,7 +14,8 @@
         "generated": "Generiert",
         "scanned": "Gescannte",
         "reuse": "Wiederverwenden",
-        "clearHistory": "Verlauf löschen"
+        "clearHistory": "Verlauf löschen",
+        "historyButton": "Geschichte"
     },
     "errors": {
         "invalidFile": "Ungültiger Dateityp. Bitte laden Sie ein PNG- oder JPEG-Bild hoch.",

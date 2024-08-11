@@ -14,7 +14,8 @@
         "generated": "生成された",
         "scanned": "スキャンされた",
         "reuse": "再利用",
-        "clearHistory": "履歴をクリア"
+        "clearHistory": "履歴をクリア",
+        "historyButton": "歴史"
     },
     "errors": {
         "invalidFile": "無効なファイルタイプです。PNGまたはJPEG画像をアップロードしてください。",

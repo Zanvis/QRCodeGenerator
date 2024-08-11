@@ -14,7 +14,8 @@
         "generated": "生成",
         "scanned": "已扫描",
         "reuse": "重复使用",
-        "clearHistory": "清除历史记录"
+        "clearHistory": "清除历史记录",
+        "historyButton": "历史"
     },
     "errors": {
         "invalidFile": "文件类型无效。请上传PNG或JPEG图像。",

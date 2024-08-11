@@ -14,7 +14,8 @@
         "generated": "उत्पन्न",
         "scanned": "स्कैन किया गया",
         "reuse": "पुनः उपयोग करें",
-        "clearHistory": "इतिहास साफ़ करें"
+        "clearHistory": "इतिहास साफ़ करें",
+        "historyButton": "इतिहास"
     },
     "errors": {
         "invalidFile": "अमान्य फ़ाइल प्रकार। कृपया PNG या JPEG छवि अपलोड करें।",
