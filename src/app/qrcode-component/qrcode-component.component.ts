@@ -6,6 +6,7 @@ import jsQR from 'jsqr';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 interface QRCodeHistoryItem {
   id: string;
@@ -17,7 +18,7 @@ interface QRCodeHistoryItem {
 @Component({
   selector: 'app-qrcode-component',
   standalone: true,
-  imports: [CommonModule, FormsModule, QRCodeModule],
+  imports: [CommonModule, FormsModule, QRCodeModule, TranslateModule],
   templateUrl: './qrcode-component.component.html',
   styleUrls: ['./qrcode-component.component.css'],
   animations: [
@@ -43,8 +44,50 @@ export class QRCodeComponentComponent implements OnInit {
   copySuccess: boolean = false;
   isDragging = false;
   qrCodeHistory: QRCodeHistoryItem[] = [];
-  
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  currentLang: string = 'en';
+  invalidFileErrorKey: string | null = null;
+  clipboardCopyErrorKey: string | null = null;
+  noQRCodeFoundKey: string | null = null;
+  languages = [
+    { code: 'en', name: 'English' },
+    { code: 'pl', name: 'Polski' },
+    { code: 'es', name: 'Español' },
+    { code: 'fr', name: 'Français' },
+    { code: 'it', name: 'Italiano' },
+    { code: 'de', name: 'Deutsch' },
+    { code: 'pt', name: 'Português' },
+    { code: 'nl', name: 'Nederlands' },
+    { code: 'ru', name: 'Русский' },
+    { code: 'jp', name: '日本語' },
+    { code: 'zh', name: '中文' },
+    { code: 'ar', name: 'العربية' },
+    { code: 'hi', name: 'हिन्दी' },
+    { code: 'bn', name: 'বাংলা' }
+  ];
+
+  isDropdownOpen = false;
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  selectLanguage(langCode: string) {
+    this.currentLang = langCode;
+    this.changeLanguage();
+    this.isDropdownOpen = false;
+  }
+
+  getCurrentLanguageName(): string {
+    const currentLanguage = this.languages.find(lang => lang.code === this.currentLang);
+    return currentLanguage ? currentLanguage.name : 'Select Language';
+  }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private translate : TranslateService) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.currentLang = localStorage.getItem('preferredLanguage') || 'en';
+    }
+    translate.setDefaultLang('en');
+    translate.use(this.currentLang);
+  }
   ngOnInit() {
     this.loadHistoryFromLocalStorage();
   }
@@ -65,10 +108,10 @@ export class QRCodeComponentComponent implements OnInit {
           timestamp: new Date()
         });
       } else {
-        console.error('Canvas element not found');
+        console.error(this.translate.instant('errors.canvasNotFound'));
       }
     } else {
-      console.error('QR Code component not found');
+      console.error(this.translate.instant('errors.qrComponentNotFound'));
     }
   }
 
@@ -103,6 +146,9 @@ export class QRCodeComponentComponent implements OnInit {
   }
 
   handleFile(file: File) {
+    this.invalidFileErrorKey = null;
+    this.noQRCodeFoundKey = null;
+    this.decodedText = null;
     if (file.type.match(/image\/(png|jpeg)/)) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
@@ -125,7 +171,8 @@ export class QRCodeComponentComponent implements OnInit {
                 timestamp: new Date()
               });
             } else {
-              this.decodedText = 'No QR code found in the image.';
+              this.noQRCodeFoundKey = 'errors.noQRCodeFound';
+              this.updateErrorMessages();
             }
           }
         };
@@ -133,7 +180,9 @@ export class QRCodeComponentComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     } else {
-      this.decodedText = 'Please upload a valid image file (PNG or JPEG).';
+      // this.decodedText = this.translate.instant('errors.invalidFile');
+      this.invalidFileErrorKey = 'errors.invalidFile';
+      this.updateErrorMessages();
     }
   }
   copyToClipboard() {
@@ -142,7 +191,9 @@ export class QRCodeComponentComponent implements OnInit {
         this.copySuccess = true;
         setTimeout(() => this.copySuccess = false, 3000);
       }).catch(err => {
-        console.error('Could not copy text: ', err);
+        // console.error('Could not copy text: ', err);
+        this.clipboardCopyErrorKey = 'errors.clipboardCopyFailed';
+        this.updateErrorMessages();
       });
     }
   }
@@ -159,9 +210,9 @@ export class QRCodeComponentComponent implements OnInit {
 }
   
   private generateUniqueId(): string {
-    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+    return Date.now().toString(36) + Math.random().toString(36).substring(2);
   }
-  
+
   private saveHistoryToLocalStorage() {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('qrCodeHistory', JSON.stringify(this.qrCodeHistory));
@@ -198,5 +249,23 @@ export class QRCodeComponentComponent implements OnInit {
   deleteHistoryItem(id: string) {
     this.qrCodeHistory = this.qrCodeHistory.filter(item => item.id !== id);
     this.saveHistoryToLocalStorage();
+  }
+
+  changeLanguage() {
+    this.translate.use(this.currentLang);
+    localStorage.setItem('preferredLanguage', this.currentLang);
+    this.updateErrorMessages();
+  }
+
+  updateErrorMessages() {
+    if (this.invalidFileErrorKey) {
+      this.decodedText = this.translate.instant(this.invalidFileErrorKey);
+    }
+    if (this.clipboardCopyErrorKey) {
+      console.error(this.translate.instant(this.clipboardCopyErrorKey));
+    }
+    if (this.noQRCodeFoundKey) {
+      this.decodedText = this.translate.instant(this.noQRCodeFoundKey);
+    }
   }
 }

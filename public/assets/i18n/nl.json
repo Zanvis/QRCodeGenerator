@@ -1,0 +1,26 @@
+{
+    "general": {
+        "title": "QR-code Generator",
+        "enterText": "Voer tekst in voor QR-code",
+        "scanQR": "Scan deze QR-code om de ingevoerde tekst te bekijken.",
+        "downloadQR": "QR-code downloaden",
+        "uploadQR": "Upload een QR-code afbeelding om de inhoud te decoderen.",
+        "dragDrop": "Sleep een QR-code afbeelding hierheen, of klik om te selecteren",
+        "decodedQR": "Gedecodeerde QR-code:",
+        "copy": "Kopiëren",
+        "copiedText": "Tekst gekopieerd naar klembord!",
+        "history": "QR-code Geschiedenis",
+        "noHistory": "Nog geen geschiedenis beschikbaar.",
+        "generated": "Gegenereerd",
+        "scanned": "Gescand",
+        "reuse": "Hergebruiken",
+        "clearHistory": "Geschiedenis wissen"
+    },
+    "errors": {
+        "invalidFile": "Ongeldig bestandstype. Upload een PNG- of JPEG-afbeelding.",
+        "clipboardCopyFailed": "Kopiëren naar klembord mislukt",
+        "noQRCodeFound": "Geen QR-code gevonden in de afbeelding.",
+        "canvasNotFound": "Canvas-element niet gevonden",
+        "qrComponentNotFound": "QR-code component niet gevonden"
+    }
+}
