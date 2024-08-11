@@ -14,7 +14,8 @@
         "generated": "Generated",
         "scanned": "Scanned",
         "reuse": "Reuse",
-        "clearHistory": "Clear History"
+        "clearHistory": "Clear History",
+        "historyButton": "History"
     },
     "errors": {
         "invalidFile": "Invalid file type. Please upload a PNG or JPEG image.",

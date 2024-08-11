@@ -14,7 +14,8 @@
         "generated": "생성됨",
         "scanned": "스캔됨",
         "reuse": "재사용",
-        "clearHistory": "기록 지우기"
+        "clearHistory": "기록 지우기",
+        "historyButton": "역사 "
     },
     "errors": {
         "invalidFile": "잘못된 파일 형식입니다. PNG 또는 JPEG 이미지를 업로드하세요.",

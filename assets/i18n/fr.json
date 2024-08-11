@@ -14,7 +14,8 @@
         "generated": "Généré",
         "scanned": "Scanné",
         "reuse": "Réutiliser",
-        "clearHistory": "Effacer l'historique"
+        "clearHistory": "Effacer l'historique",
+        "historyButton": "Histoire"
     },
     "errors": {
         "invalidFile": "Type de fichier invalide. Veuillez télécharger une image PNG ou JPEG.",

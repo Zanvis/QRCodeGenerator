@@ -14,7 +14,8 @@
         "generated": "Generato",
         "scanned": "Scansionato",
         "reuse": "Riutilizza",
-        "clearHistory": "Cancella Cronologia"
+        "clearHistory": "Cancella Cronologia",
+        "historyButton": "Storia"
     },
     "errors": {
         "invalidFile": "Tipo di file non valido. Si prega di caricare un'immagine PNG o JPEG.",

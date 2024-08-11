@@ -14,7 +14,8 @@
         "generated": "জেনারেট করা",
         "scanned": "স্ক্যান করা হয়েছে",
         "reuse": "পুনঃব্যবহার করুন",
-        "clearHistory": "ইতিহাস মুছুন"
+        "clearHistory": "ইতিহাস মুছুন",
+        "historyButton": "ইতিহাস"
     },
     "errors": {
         "invalidFile": "অবৈধ ফাইল প্রকার। অনুগ্রহ করে একটি PNG বা JPEG চিত্র আপলোড করুন।",

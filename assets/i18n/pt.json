@@ -14,7 +14,8 @@
         "generated": "Gerado",
         "scanned": "Escaneado",
         "reuse": "Reutilizar",
-        "clearHistory": "Limpar Histórico"
+        "clearHistory": "Limpar Histórico",
+        "historyButton": "História"
     },
     "errors": {
         "invalidFile": "Tipo de arquivo inválido. Por favor, envie uma imagem PNG ou JPEG.",

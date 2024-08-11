@@ -14,7 +14,8 @@
         "generated": "Gegenereerd",
         "scanned": "Gescand",
         "reuse": "Hergebruiken",
-        "clearHistory": "Geschiedenis wissen"
+        "clearHistory": "Geschiedenis wissen",
+        "historyButton": "Geschiedenis"
     },
     "errors": {
         "invalidFile": "Ongeldig bestandstype. Upload een PNG- of JPEG-afbeelding.",

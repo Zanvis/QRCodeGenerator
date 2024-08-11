@@ -14,7 +14,8 @@
         "generated": "تم التوليد",
         "scanned": "تم المسح",
         "reuse": "إعادة استخدام",
-        "clearHistory": "مسح السجل"
+        "clearHistory": "مسح السجل",
+        "historyButton": "تاريخ"
     },
     "errors": {
         "invalidFile": "نوع الملف غير صالح. يرجى تحميل صورة PNG أو JPEG.",
