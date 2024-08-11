@@ -1,0 +1,26 @@
+{
+    "general": {
+        "title": "QRコード生成器",
+        "enterText": "QRコード用のテキストを入力",
+        "scanQR": "入力されたテキストを表示するには、このQRコードをスキャンしてください。",
+        "downloadQR": "QRコードをダウンロード",
+        "uploadQR": "内容をデコードするためにQRコード画像をアップロードします。",
+        "dragDrop": "ここにQRコード画像をドラッグ＆ドロップするか、クリックして選択してください",
+        "decodedQR": "デコードされたQRコード：",
+        "copy": "コピー",
+        "copiedText": "テキストがクリップボードにコピーされました！",
+        "history": "QRコード履歴",
+        "noHistory": "まだ履歴はありません。",
+        "generated": "生成された",
+        "scanned": "スキャンされた",
+        "reuse": "再利用",
+        "clearHistory": "履歴をクリア"
+    },
+    "errors": {
+        "invalidFile": "無効なファイルタイプです。PNGまたはJPEG画像をアップロードしてください。",
+        "clipboardCopyFailed": "クリップボードへのコピーに失敗しました",
+        "noQRCodeFound": "画像にQRコードが見つかりませんでした。",
+        "canvasNotFound": "キャンバス要素が見つかりません",
+        "qrComponentNotFound": "QRコードコンポーネントが見つかりません"
+    }
+}

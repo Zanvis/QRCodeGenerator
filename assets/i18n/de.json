@@ -1,0 +1,26 @@
+{
+    "general": {
+        "title": "QR-Code Generator",
+        "enterText": "Text für den QR-Code eingeben",
+        "scanQR": "Scannen Sie diesen QR-Code, um den eingegebenen Text anzuzeigen.",
+        "downloadQR": "QR-Code herunterladen",
+        "uploadQR": "Laden Sie ein QR-Code-Bild hoch, um dessen Inhalt zu decodieren.",
+        "dragDrop": "Ziehen Sie ein QR-Code-Bild hierher oder klicken Sie, um auszuwählen",
+        "decodedQR": "Dekodierter QR-Code:",
+        "copy": "Kopieren",
+        "copiedText": "Text in die Zwischenablage kopiert!",
+        "history": "QR-Code Verlauf",
+        "noHistory": "Noch keine Verlauf verfügbar.",
+        "generated": "Generiert",
+        "scanned": "Gescannte",
+        "reuse": "Wiederverwenden",
+        "clearHistory": "Verlauf löschen"
+    },
+    "errors": {
+        "invalidFile": "Ungültiger Dateityp. Bitte laden Sie ein PNG- oder JPEG-Bild hoch.",
+        "clipboardCopyFailed": "Kopieren in die Zwischenablage fehlgeschlagen",
+        "noQRCodeFound": "Kein QR-Code im Bild gefunden.",
+        "canvasNotFound": "Canvas-Element nicht gefunden",
+        "qrComponentNotFound": "QR-Code-Komponente nicht gefunden"
+    }
+}

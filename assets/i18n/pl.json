@@ -1,0 +1,26 @@
+{
+    "general": {
+        "title": "Generator QR kodów",
+        "enterText": "Wprowadź tekst dla kodu QR",
+        "scanQR": "Zeskanuj ten kod QR, aby zobaczyć wprowadzony tekst.",
+        "downloadQR": "Pobierz kod QR",
+        "uploadQR": "Prześlij obraz kodu QR, aby odkodować jego zawartość.",
+        "dragDrop": "Przeciągnij i upuść obraz kodu QR tutaj lub kliknij, aby wybrać",
+        "decodedQR": "Odkodowany kod QR:",
+        "copy": "Kopiuj",
+        "copiedText": "Tekst skopiowany do schowka!",
+        "history": "Historia kodów QR",
+        "noHistory": "Brak dostępnej historii.",
+        "generated": "Wygenerowany",
+        "scanned": "Zeskanowany",
+        "reuse": "Użyj ponownie",
+        "clearHistory": "Wyczyść historię"
+    },
+    "errors": {
+        "invalidFile": "Nieprawidłowy typ pliku. Proszę wgrać obraz PNG lub JPEG.",
+        "clipboardCopyFailed": "Nie udało się skopiować do schowka",
+        "noQRCodeFound": "Nie znaleziono kodu QR na obrazie.",
+        "canvasNotFound": "Nie znaleziono elementu canvas",
+        "qrComponentNotFound": "Nie znaleziono komponentu kodu QR"
+    }
+}

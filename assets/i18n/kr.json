@@ -1,0 +1,26 @@
+{
+    "general": {
+        "title": "QR 코드 생성기",
+        "enterText": "QR 코드에 입력할 텍스트",
+        "scanQR": "입력한 텍스트를 보려면 이 QR 코드를 스캔하세요.",
+        "downloadQR": "QR 코드 다운로드",
+        "uploadQR": "QR 코드 이미지 업로드하여 내용을 디코딩합니다.",
+        "dragDrop": "여기에 QR 코드 이미지를 드래그 앤 드롭하거나 클릭하여 선택하세요.",
+        "decodedQR": "디코딩된 QR 코드:",
+        "copy": "복사",
+        "copiedText": "텍스트가 클립보드에 복사되었습니다!",
+        "history": "QR 코드 기록",
+        "noHistory": "아직 사용 가능한 기록이 없습니다.",
+        "generated": "생성됨",
+        "scanned": "스캔됨",
+        "reuse": "재사용",
+        "clearHistory": "기록 지우기"
+    },
+    "errors": {
+        "invalidFile": "잘못된 파일 형식입니다. PNG 또는 JPEG 이미지를 업로드하세요.",
+        "clipboardCopyFailed": "클립보드에 복사하지 못했습니다",
+        "noQRCodeFound": "이미지에서 QR 코드를 찾을 수 없습니다.",
+        "canvasNotFound": "캔버스 요소를 찾을 수 없습니다",
+        "qrComponentNotFound": "QR 코드 구성 요소를 찾을 수 없습니다"
+    }
+}
