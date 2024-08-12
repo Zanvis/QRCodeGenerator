@@ -13,7 +13,7 @@
                     </svg>
                 </button>
                 
-                <div *ngIf="isDropdownOpen" class="absolute z-50 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none w-full">
+                <div *ngIf="isDropdownOpen" [@dropdownAnimation] class="absolute z-50 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none w-full">
                     <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                         <a *ngFor="let lang of languages" 
                             (click)="selectLanguage(lang.code)" 

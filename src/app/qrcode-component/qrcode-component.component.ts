@@ -22,6 +22,19 @@ interface QRCodeHistoryItem {
   templateUrl: './qrcode-component.component.html',
   styleUrls: ['./qrcode-component.component.css'],
   animations: [
+    trigger('dropdownAnimation', [
+      state('void', style({
+        opacity: 0,
+        transform: 'translateY(-10px)'
+      })),
+      state('*', style({
+        opacity: 1,
+        transform: 'translateY(0)'
+      })),
+      transition(':enter, :leave', [
+        animate('300ms ease-in-out')
+      ])
+    ]),
     trigger('sidebarAnimation', [
       state('open', style({
         transform: 'translateX(0)',
@@ -44,10 +57,12 @@ export class QRCodeComponentComponent implements OnInit {
   copySuccess: boolean = false;
   isDragging = false;
   qrCodeHistory: QRCodeHistoryItem[] = [];
+  isSidebarOpen = false;
   currentLang: string = 'en';
   invalidFileErrorKey: string | null = null;
   clipboardCopyErrorKey: string | null = null;
   noQRCodeFoundKey: string | null = null;
+  isDropdownOpen = false;
   languages = [
     { code: 'en', name: 'English' },
     { code: 'pl', name: 'Polski' },
@@ -64,8 +79,6 @@ export class QRCodeComponentComponent implements OnInit {
     { code: 'hi', name: 'हिन्दी' },
     { code: 'bn', name: 'বাংলা' }
   ];
-
-  isDropdownOpen = false;
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -227,7 +240,6 @@ export class QRCodeComponentComponent implements OnInit {
       }
     }
   }
-  isSidebarOpen = false;
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
