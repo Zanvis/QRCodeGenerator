@@ -1,133 +1,221 @@
-<section class="bg-gray-300 min-h-screen flex items-center justify-center">
-    <div class="container mx-auto p-4 max-w-md bg-white rounded-lg shadow-lg md:mt-12">
-        <div class="flex justify-center items-center mb-4 relative">
-            <h2 class="text-2xl font-bold text-center text-gray-800">{{ 'general.title' | translate}}</h2>
-        </div>
-        <div class="mb-4">
-            <div class="relative float-left mb-4 w-[64%]">
-                <button type="button" (click)="toggleDropdown()" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 h-10">
-                    <img [src]="'assets/flags/' + currentLang + '.png'" class="w-5 h-5 mr-2" alt="Selected language flag">
-                    {{ getCurrentLanguageName() }}
-                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </button>
-                
-                <div *ngIf="isDropdownOpen" [@dropdownAnimation] class="absolute z-50 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none w-full">
-                    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                        <a *ngFor="let lang of languages" 
-                            (click)="selectLanguage(lang.code)" 
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer" 
-                            role="menuitem">
-                            <img [src]="'assets/flags/' + lang.code + '.png'" class="inline-block w-5 h-5 mr-2" alt="{{ lang.name }} flag">
-                            {{ lang.name }}
-                        </a>
+<section class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen flex items-center justify-center p-4">
+    <div class="container mx-auto p-6 max-w-5xl bg-white rounded-xl shadow-xl grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Left Column: QR Generation -->
+        <div class="flex flex-col h-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800 mr-4">{{ 'general.title' | translate}}</h2>
+                <div class="relative">
+                    <button type="button" (click)="toggleDropdown()" class="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-3 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+                        <img [src]="'assets/flags/' + currentLang + '.png'" class="w-5 h-5 mr-2" alt="Selected language flag">
+                        {{ getCurrentLanguageName() }}
+                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    
+                    <div *ngIf="isDropdownOpen" [@dropdownAnimation] class="absolute z-50 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none w-48 right-0">
+                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                            <a *ngFor="let lang of languages" 
+                                (click)="selectLanguage(lang.code)" 
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer" 
+                                role="menuitem">
+                                <img [src]="'assets/flags/' + lang.code + '.png'" class="inline-block w-5 h-5 mr-2" alt="{{ lang.name }} flag">
+                                {{ lang.name }}
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>            
-            <button 
-                (click)="toggleSidebar()" 
-                class="float-right w-[34%] bg-blue-500 text-white py-2 px-2 rounded-md hover:bg-blue-600 transition duration-300 h-10">
-                <i class="fas fa-history"></i>
-                {{ 'general.historyButton' | translate }}
-        </button>
-        
-        </div>
-        <div class="mb-4">
-            <input 
-                [(ngModel)]="qrData" 
-                placeholder="{{ 'general.enterText' | translate }}" 
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <input 
+                    [(ngModel)]="qrData" 
+                    placeholder="{{ 'general.enterText' | translate }}" 
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg">
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-xl shadow-inner flex justify-center items-center mb-6 flex-grow">
+                <qrcode
+                    #qrCode
+                    [qrdata]="qrData"
+                    [allowEmptyString]="true"
+                    [ariaLabel]="'QR Code image with the following content: ' + qrData"
+                    [colorDark]="'#000000ff'"
+                    [colorLight]="'#ffffffff'"
+                    [elementType]="'canvas'"
+                    [errorCorrectionLevel]="'M'"
+                    [imageSrc]="iconSrc ?? ''"
+                    [imageHeight]="iconSrc ? iconHeight : 0"
+                    [imageWidth]="iconSrc ? iconWidth : 0"
+                    [margin]="4"
+                    [scale]="1"
+                    [width]="320"
+                ></qrcode>
+            </div>
+
+            <p class="text-sm text-gray-600 text-center mb-4">
+                {{ 'general.scanQR' | translate }}
+            </p>
+
+            <div class="flex gap-4 mb-6">
+                <button 
+                    (click)="downloadQRCode()" 
+                    class="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-download mr-2"></i>
+                    {{ 'general.downloadQR' | translate }}
+                </button>
+                <button 
+                    (click)="toggleSidebar()" 
+                    class="flex-1 bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-history mr-2"></i>
+                    {{ 'general.historyButton' | translate }}
+                </button>
+            </div>
+
+            <!-- QR Code Icon Options -->
+            <div class="mb-4">
+                <button 
+                    (click)="toggleIconOptions()" 
+                    class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-image mr-2"></i>
+                    {{ showIconOptions ? 'Hide Icon Options' : 'Add Logo/Icon' }}
+                </button>
+            </div>
+
+            <!-- Icon Options (conditionally displayed) -->
+            <div *ngIf="showIconOptions" class="mb-4 p-4 bg-gray-50 rounded-lg animate-fade-in">
+                <div class="mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-gray-700 font-medium">
+                            Select Logo/Icon
+                        </label>
+                        <button *ngIf="iconSrc" 
+                            (click)="removeIcon()" 
+                            class="text-red-600 hover:text-red-800 transition duration-300">
+                            <i class="fas fa-times mr-1"></i>
+                            Remove
+                        </button>
+                    </div>
+                    <div 
+                        class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:bg-gray-100 transition duration-300"
+                        (click)="iconInput.click()">
+                        <p class="text-gray-600">
+                            <i class="fas fa-cloud-upload-alt text-2xl mb-2"></i><br>
+                            Click to upload image
+                        </p>
+                        <input 
+                            #iconInput
+                            type="file" 
+                            (change)="onIconSelected($event)" 
+                            accept="image/png,image/jpeg,image/svg+xml" 
+                            class="hidden">
+                    </div>
+                    
+                    <!-- Preview image if selected -->
+                    <div *ngIf="iconSrc" class="mt-4 text-center">
+                        <p class="text-sm text-gray-600 mb-2">Preview:</p>
+                        <img [src]="iconSrc" class="max-h-32 mx-auto" alt="QR code center icon">
+                    </div>
+                </div>
+                
+                <!-- Single slider for icon size -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">
+                        Icon Size: {{ iconSize }}px
+                    </label>
+                    <input 
+                        type="range" 
+                        [(ngModel)]="iconSize" 
+                        (input)="updateIconSize()"
+                        min="20" 
+                        max="125" 
+                        class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
+                </div>
+                <p class="text-xs text-gray-500 mt-2">
+                    Note: Icon should not be too large to keep the QR code scannable.
+                </p>
+            </div>
         </div>
 
-        <div class="bg-gray-100 p-4 rounded-lg shadow-inner flex justify-center items-center mb-4">
-            <qrcode
-                #qrCode
-                [qrdata]="qrData"
-                [allowEmptyString]="true"
-                [ariaLabel]="'QR Code image with the following content: ' + qrData"
-                [colorDark]="'#000000ff'"
-                [colorLight]="'#ffffffff'"
-                [elementType]="'canvas'"
-                [errorCorrectionLevel]="'M'"
-                [margin]="4"
-                [scale]="1"
-                [width]="250"
-            ></qrcode>
-        </div>
+        <!-- Right Column: QR Scanning -->
+        <div class="flex flex-col h-full">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Scan QR Code</h3>
+            
+            <div 
+                class="flex-grow mb-6 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:bg-gray-50 transition duration-300 flex flex-col items-center justify-center"
+                (dragover)="onDragOver($event)"
+                (dragleave)="onDragLeave($event)"
+                (drop)="onDrop($event)"
+                [class.bg-blue-50]="isDragging"
+                (click)="fileInput.click()">
+                <i class="fas fa-qrcode text-4xl text-gray-400 mb-4"></i>
+                <p class="text-gray-600">{{ 'general.dragDrop' | translate }}</p>
+                <p class="text-sm text-gray-500 mt-2">{{ 'general.uploadQR' | translate }}</p>
+                <input 
+                    #fileInput
+                    type="file" 
+                    (change)="onFileSelected($event)" 
+                    accept="image/png,image/jpeg" 
+                    class="hidden">
+            </div>
 
-        <p class="text-sm text-gray-600 text-center mb-4">
-            {{ 'general.scanQR' | translate }}
-        </p>
-
-        <button 
-            (click)="downloadQRCode()" 
-            class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300 mb-4">
-            {{ 'general.downloadQR' | translate }}
-        </button>
-
-        <p class="text-sm text-gray-600 text-center mb-4">
-            {{ 'general.uploadQR' | translate }}
-        </p>
-        <div 
-            class="mb-4 border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:bg-gray-50 transition duration-300"
-            (dragover)="onDragOver($event)"
-            (dragleave)="onDragLeave($event)"
-            (drop)="onDrop($event)"
-            [class.bg-blue-50]="isDragging"
-            (click)="fileInput.click()"
-        >
-            <p class="text-gray-600">{{ 'general.dragDrop' | translate }}</p>
-            <input 
-                #fileInput
-                type="file" 
-                (change)="onFileSelected($event)" 
-                accept="image/png,image/jpeg" 
-                class="hidden"
-            >
-        </div>
-        <div *ngIf="decodedText" class="mt-4 p-4 bg-gray-100 rounded-lg">
-            <h3 class="font-bold text-lg mb-2">{{ 'general.decodedQR' | translate }}</h3>
-            <p class="break-words">{{decodedText}}</p>
-            <button 
-                (click)="copyToClipboard()" 
-                class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 mt-4 flex items-center justify-center">
-                <i class="fas fa-copy mr-2"></i> {{ 'general.copy' | translate }}
-            </button>
-            <p *ngIf="copySuccess" class="text-green-500 text-center mt-4">{{ 'general.copiedText' | translate }}</p>
+            <div *ngIf="decodedText" class="p-6 bg-gray-50 rounded-xl shadow-inner animate-fade-in">
+                <h3 class="font-bold text-xl mb-4 text-gray-800">{{ 'general.decodedQR' | translate }}</h3>
+                <div class="bg-white p-4 rounded-lg mb-4 max-h-40 overflow-auto">
+                    <p class="break-words">{{decodedText}}</p>
+                </div>
+                <button 
+                    (click)="copyToClipboard()" 
+                    class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-copy mr-2"></i> {{ 'general.copy' | translate }}
+                </button>
+                <p *ngIf="copySuccess" class="text-green-500 text-center mt-4 animate-pulse">
+                    <i class="fas fa-check-circle mr-1"></i>
+                    {{ 'general.copiedText' | translate }}
+                </p>
+            </div>
         </div>
     </div>
 
+    <!-- Sidebar for History -->
     <div 
         [@sidebarAnimation]="isSidebarOpen ? 'open' : 'closed'"
-        class="fixed top-0 right-0 h-full w-64 bg-gray-200 shadow-lg p-4 overflow-y-auto transition duration-300 z-50">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-bold">{{ 'general.history' | translate }}</h3>
+        class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl p-6 overflow-y-auto transition-all duration-300 z-50">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-bold text-gray-800">{{ 'general.history' | translate }}</h3>
             <button (click)="toggleSidebar()" class="text-gray-600 hover:text-gray-800 transition duration-300">
                 <i class="fas fa-times text-xl"></i>
             </button>
         </div>
-        <div *ngIf="qrCodeHistory.length === 0" class="text-gray-600">
-            {{ 'general.noHistory' | translate }}
+        <div *ngIf="qrCodeHistory.length === 0" class="text-gray-600 text-center p-8">
+            <i class="fas fa-history text-4xl text-gray-300 mb-4"></i>
+            <p>{{ 'general.noHistory' | translate }}</p>
         </div>
-        <div *ngFor="let item of qrCodeHistory" class="mb-4 p-4 bg-gray-100 rounded-lg relative">
+        <div *ngFor="let item of qrCodeHistory" class="mb-4 p-4 bg-gray-50 rounded-lg relative hover:shadow-md transition-all">
             <button 
                 (click)="deleteHistoryItem(item.id)" 
-                class="absolute top-2 right-2 text-red-500 hover:text-red-700 transition duration-300">
-                <i class="fas fa-times"></i>
+                class="absolute top-3 right-3 text-red-500 hover:text-red-700 transition duration-300">
+                <i class="fas fa-trash-alt"></i>
             </button>
-            <p class="font-bold">{{ (item.type === 'generated' ? 'general.generated' : 'general.scanned') | translate }} QR Code</p>
-            <p class="text-sm text-gray-600">{{ item.timestamp | date:'medium' }}</p>
-            <p class="mt-2 break-words">{{ item.data }}</p>
+            <div class="flex items-center mb-2">
+                <i class="fas fa-qrcode text-indigo-500 mr-2"></i>
+                <p class="font-bold">{{ (item.type === 'generated' ? 'general.generated' : 'general.scanned') | translate }}</p>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">{{ item.timestamp | date:'medium' }}</p>
+            <div class="bg-white p-3 rounded border border-gray-200 mb-3 max-h-24 overflow-auto">
+                <p class="break-words text-sm">{{ item.data }}</p>
+            </div>
             <button 
                 (click)="reuseHistoryItem(item)" 
-                class="mt-2 bg-blue-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 transition duration-300">
+                class="w-full bg-blue-500 text-white py-2 px-3 rounded-md hover:bg-blue-600 transition duration-300 flex items-center justify-center">
+                <i class="fas fa-sync-alt mr-2"></i>
                 {{ 'general.reuse' | translate }}
             </button>
         </div>
         <button *ngIf="qrCodeHistory.length > 0" 
             (click)="clearHistory()" 
-            class="mt-4 bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300">
+            class="mt-6 w-full bg-red-500 text-white py-3 px-4 rounded-lg hover:bg-red-600 transition duration-300 flex items-center justify-center">
+            <i class="fas fa-trash mr-2"></i>
             {{ 'general.clearHistory' | translate }}
         </button>
     </div>

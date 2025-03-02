@@ -52,6 +52,7 @@ interface QRCodeHistoryItem {
 export class QRCodeComponentComponent implements OnInit {
   @ViewChild(QRCodeComponent) qrCode!: QRCodeComponent;
   @ViewChild('fileInput') fileInput!: ElementRef;
+  @ViewChild('iconInput') iconInput!: ElementRef;
   qrData: string = '';
   decodedText: string | null = null;
   copySuccess: boolean = false;
@@ -79,6 +80,13 @@ export class QRCodeComponentComponent implements OnInit {
     { code: 'hi', name: 'हिन्दी' },
     { code: 'bn', name: 'বাংলা' }
   ];
+  
+  // QR code icon properties
+  iconSrc: string | null = null;
+  iconWidth: number = 75;
+  iconHeight: number = 75;
+  iconSize: number = 75;
+  showIconOptions: boolean = false;
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -89,7 +97,17 @@ export class QRCodeComponentComponent implements OnInit {
     this.changeLanguage();
     this.isDropdownOpen = false;
   }
-
+  updateIconSize() {
+    // Ensure minimum size
+    if (this.iconSize < 20) this.iconSize = 20;
+    
+    // Ensure maximum size (to keep QR code scannable)
+    if (this.iconSize > 125) this.iconSize = 125;
+    
+    // Set both width and height to the same value
+    this.iconWidth = this.iconSize;
+    this.iconHeight = this.iconSize;
+  }
   getCurrentLanguageName(): string {
     const currentLanguage = this.languages.find(lang => lang.code === this.currentLang);
     return currentLanguage ? currentLanguage.name : 'Select Language';
@@ -193,18 +211,74 @@ export class QRCodeComponentComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     } else {
-      // this.decodedText = this.translate.instant('errors.invalidFile');
       this.invalidFileErrorKey = 'errors.invalidFile';
       this.updateErrorMessages();
     }
   }
+  
+  // New method to handle icon selection
+  onIconSelected(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+      this.handleIconFile(file);
+    }
+  }
+
+  // Process the selected icon file
+  handleIconFile(file: File) {
+    if (file.type.match(/image\/(png|jpeg|svg\+xml)/)) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.iconSrc = e.target.result;
+        this.iconSize = 75; // Reset to default when new icon is loaded
+        this.iconWidth = this.iconSize;
+        this.iconHeight = this.iconSize;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.error(this.translate.instant('errors.invalidImageFile'));
+    }
+  }
+
+  // Toggle icon options visibility
+  toggleIconOptions() {
+    this.showIconOptions = !this.showIconOptions;
+    if (!this.showIconOptions) {
+      this.iconSrc = null;
+      this.iconSize = 75;
+      this.iconWidth = 75;
+      this.iconHeight = 75;
+    }
+  }
+
+  // Update icon dimensions
+  updateIconDimensions() {
+    // Ensure minimum size
+    if (this.iconWidth < 20) this.iconWidth = 20;
+    if (this.iconHeight < 20) this.iconHeight = 20;
+    
+    // Ensure maximum size (to keep QR code scannable)
+    if (this.iconWidth > 125) this.iconWidth = 125;
+    if (this.iconHeight > 125) this.iconHeight = 125;
+  }
+
+  // Remove the current icon
+  removeIcon() {
+    this.iconSrc = null;
+    this.iconSize = 75;
+    this.iconWidth = 75;
+    this.iconHeight = 75;
+    if (this.iconInput && this.iconInput.nativeElement) {
+      this.iconInput.nativeElement.value = '';
+    }
+  }
+  
   copyToClipboard() {
     if (this.decodedText) {
       navigator.clipboard.writeText(this.decodedText).then(() => {
         this.copySuccess = true;
         setTimeout(() => this.copySuccess = false, 3000);
       }).catch(err => {
-        // console.error('Could not copy text: ', err);
         this.clipboardCopyErrorKey = 'errors.clipboardCopyFailed';
         this.updateErrorMessages();
       });
@@ -220,7 +294,7 @@ export class QRCodeComponentComponent implements OnInit {
     // Limit history to last 10 items
     this.qrCodeHistory = this.qrCodeHistory.slice(0, 10);
     this.saveHistoryToLocalStorage();
-}
+  }
   
   private generateUniqueId(): string {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
