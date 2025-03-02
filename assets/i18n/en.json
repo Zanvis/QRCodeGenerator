@@ -15,13 +15,19 @@
         "scanned": "Scanned",
         "reuse": "Reuse",
         "clearHistory": "Clear History",
-        "historyButton": "History"
+        "historyButton": "History",
+        "uploadIcon": "Upload an icon to place in the center of your QR code",
+        "iconSizeLabel": "Icon Size",
+        "addIcon": "Add Icon",
+        "changeIcon": "Change Icon",
+        "removeIcon": "Remove Icon"
     },
     "errors": {
         "invalidFile": "Invalid file type. Please upload a PNG or JPEG image.",
         "clipboardCopyFailed": "Failed to copy to clipboard",
         "noQRCodeFound": "No QR code found in the image.",
         "canvasNotFound": "Canvas element not found",
-        "qrComponentNotFound": "QR Code component not found"
+        "qrComponentNotFound": "QR Code component not found",
+        "invalidIconFile": "Invalid icon file. Please upload a PNG, JPEG, or SVG image."
     }
 }
