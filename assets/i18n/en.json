@@ -17,10 +17,18 @@
         "clearHistory": "Clear History",
         "historyButton": "History",
         "uploadIcon": "Upload an icon to place in the center of your QR code",
-        "iconSizeLabel": "Icon Size",
+        "iconSizeLabel": "Icon Size:",
         "addIcon": "Add Icon",
         "changeIcon": "Change Icon",
-        "removeIcon": "Remove Icon"
+        "removeIcon": "Remove Icon",
+        "hideIconOptions": "Hide Icon Options",
+        "addLogoIcon": "Add Logo/Icon",
+        "selectLogoIcon": "Select Logo/Icon",
+        "remove": "Remove",
+        "clickToUpload": "Click to upload image",
+        "preview": "Preview:",
+        "iconSizeNote": "Note: Icon should not be too large to keep the QR code scannable.",
+        "scanQRCode": "Scan QR Code"
     },
     "errors": {
         "invalidFile": "Invalid file type. Please upload a PNG or JPEG image.",

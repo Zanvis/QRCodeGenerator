@@ -15,13 +15,27 @@
         "scanned": "Zeskanowany",
         "reuse": "Użyj ponownie",
         "clearHistory": "Wyczyść historię",
-        "historyButton": "Historia"
+        "historyButton": "Historia",
+        "uploadIcon": "Prześlij ikonę do umieszczenia w środku kodu QR",
+        "iconSizeLabel": "Rozmiar ikony:",
+        "addIcon": "Dodaj ikonę",
+        "changeIcon": "Zmień ikonę",
+        "removeIcon": "Usuń ikonę",
+        "hideIconOptions": "Ukryj opcje ikony",
+        "addLogoIcon": "Dodaj logo/ikonę",
+        "selectLogoIcon": "Wybierz logo/ikonę",
+        "remove": "Usuń",
+        "clickToUpload": "Kliknij, aby przesłać obraz",
+        "preview": "Podgląd:",
+        "iconSizeNote": "Uwaga: Ikona nie powinna być zbyt duża, aby kod QR pozostał skanowalny.",
+        "scanQRCode": "Skanuj kod QR"
     },
     "errors": {
         "invalidFile": "Nieprawidłowy typ pliku. Proszę wgrać obraz PNG lub JPEG.",
         "clipboardCopyFailed": "Nie udało się skopiować do schowka",
         "noQRCodeFound": "Nie znaleziono kodu QR na obrazie.",
         "canvasNotFound": "Nie znaleziono elementu canvas",
-        "qrComponentNotFound": "Nie znaleziono komponentu kodu QR"
+        "qrComponentNotFound": "Nie znaleziono komponentu kodu QR",
+        "invalidIconFile": "Nieprawidłowy plik ikony. Proszę przesłać obraz PNG, JPEG lub SVG."
     }
 }

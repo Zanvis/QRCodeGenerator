@@ -15,13 +15,27 @@
         "scanned": "Gescannte",
         "reuse": "Wiederverwenden",
         "clearHistory": "Verlauf löschen",
-        "historyButton": "Geschichte"
+        "historyButton": "Geschichte",
+        "uploadIcon": "Laden Sie ein Icon hoch, um es in der Mitte Ihres QR-Codes zu platzieren",
+        "iconSizeLabel": "Icon-Größe:",
+        "addIcon": "Icon hinzufügen",
+        "changeIcon": "Icon ändern",
+        "removeIcon": "Icon entfernen",
+        "hideIconOptions": "Icon-Optionen ausblenden",
+        "addLogoIcon": "Logo/Icon hinzufügen",
+        "selectLogoIcon": "Logo/Icon auswählen",
+        "remove": "Entfernen",
+        "clickToUpload": "Klicken, um Bild hochzuladen",
+        "preview": "Vorschau:",
+        "iconSizeNote": "Hinweis: Das Icon sollte nicht zu groß sein, damit der QR-Code scannbar bleibt.",
+        "scanQRCode": "QR-Code scannen"
     },
     "errors": {
         "invalidFile": "Ungültiger Dateityp. Bitte laden Sie ein PNG- oder JPEG-Bild hoch.",
         "clipboardCopyFailed": "Kopieren in die Zwischenablage fehlgeschlagen",
         "noQRCodeFound": "Kein QR-Code im Bild gefunden.",
         "canvasNotFound": "Canvas-Element nicht gefunden",
-        "qrComponentNotFound": "QR-Code-Komponente nicht gefunden"
+        "qrComponentNotFound": "QR-Code-Komponente nicht gefunden",
+        "invalidIconFile": "Ungültige Icon-Datei. Bitte laden Sie ein PNG-, JPEG- oder SVG-Bild hoch."
     }
 }

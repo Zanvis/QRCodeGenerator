@@ -15,13 +15,27 @@
         "scanned": "स्कैन किया गया",
         "reuse": "पुनः उपयोग करें",
         "clearHistory": "इतिहास साफ़ करें",
-        "historyButton": "इतिहास"
+        "historyButton": "इतिहास",
+        "uploadIcon": "अपने QR कोड के केंद्र में रखने के लिए एक आइकन अपलोड करें",
+        "iconSizeLabel": "आइकन आकार:",
+        "addIcon": "आइकन जोड़ें",
+        "changeIcon": "आइकन बदलें",
+        "removeIcon": "आइकन हटाएं",
+        "hideIconOptions": "आइकन विकल्प छिपाएं",
+        "addLogoIcon": "लोगो/आइकन जोड़ें",
+        "selectLogoIcon": "लोगो/आइकन चुनें",
+        "remove": "हटाएं",
+        "clickToUpload": "छवि अपलोड करने के लिए क्लिक करें",
+        "preview": "पूर्वावलोकन:",
+        "iconSizeNote": "नोट: QR कोड को स्कैन करने योग्य रखने के लिए आइकन बहुत बड़ा नहीं होना चाहिए।",
+        "scanQRCode": "QR कोड स्कैन करें"
     },
     "errors": {
         "invalidFile": "अमान्य फ़ाइल प्रकार। कृपया PNG या JPEG छवि अपलोड करें।",
         "clipboardCopyFailed": "क्लिपबोर्ड पर कॉपी करने में विफल",
         "noQRCodeFound": "छवि में कोई QR कोड नहीं मिला।",
         "canvasNotFound": "कैनवास तत्व नहीं मिला",
-        "qrComponentNotFound": "QR कोड घटक नहीं मिला"
+        "qrComponentNotFound": "QR कोड घटक नहीं मिला",
+        "invalidIconFile": "अमान्य आइकन फ़ाइल। कृपया PNG, JPEG, या SVG छवि अपलोड करें।"
     }
 }

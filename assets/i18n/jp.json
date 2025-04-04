@@ -15,13 +15,27 @@
         "scanned": "スキャンされた",
         "reuse": "再利用",
         "clearHistory": "履歴をクリア",
-        "historyButton": "歴史"
+        "historyButton": "歴史",
+        "uploadIcon": "QRコードの中心に配置するアイコンをアップロードする",
+        "iconSizeLabel": "アイコンサイズ:",
+        "addIcon": "アイコンを追加",
+        "changeIcon": "アイコンを変更",
+        "removeIcon": "アイコンを削除",
+        "hideIconOptions": "アイコンオプションを非表示",
+        "addLogoIcon": "ロゴ/アイコンを追加",
+        "selectLogoIcon": "ロゴ/アイコンを選択",
+        "remove": "削除",
+        "clickToUpload": "クリックして画像をアップロード",
+        "preview": "プレビュー:",
+        "iconSizeNote": "注意: QRコードがスキャン可能な状態を保つため、アイコンは大きすぎないようにしてください。",
+        "scanQRCode": "QRコードをスキャン"
     },
     "errors": {
         "invalidFile": "無効なファイルタイプです。PNGまたはJPEG画像をアップロードしてください。",
         "clipboardCopyFailed": "クリップボードへのコピーに失敗しました",
         "noQRCodeFound": "画像にQRコードが見つかりませんでした。",
         "canvasNotFound": "キャンバス要素が見つかりません",
-        "qrComponentNotFound": "QRコードコンポーネントが見つかりません"
+        "qrComponentNotFound": "QRコードコンポーネントが見つかりません",
+        "invalidIconFile": "無効なアイコンファイルです。PNG、JPEG、またはSVG画像をアップロードしてください。"
     }
 }

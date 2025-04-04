@@ -15,13 +15,27 @@
         "scanned": "Gescand",
         "reuse": "Hergebruiken",
         "clearHistory": "Geschiedenis wissen",
-        "historyButton": "Geschiedenis"
+        "historyButton": "Geschiedenis",
+        "uploadIcon": "Upload een icoon om in het midden van je QR-code te plaatsen",
+        "iconSizeLabel": "Icoongrootte:",
+        "addIcon": "Icoon toevoegen",
+        "changeIcon": "Icoon wijzigen",
+        "removeIcon": "Icoon verwijderen",
+        "hideIconOptions": "Icoonopties verbergen",
+        "addLogoIcon": "Logo/Icoon toevoegen",
+        "selectLogoIcon": "Logo/Icoon selecteren",
+        "remove": "Verwijderen",
+        "clickToUpload": "Klik om afbeelding te uploaden",
+        "preview": "Voorbeeld:",
+        "iconSizeNote": "Opmerking: Icoon mag niet te groot zijn om de QR-code scanbaar te houden.",
+        "scanQRCode": "QR-code scannen"
     },
     "errors": {
         "invalidFile": "Ongeldig bestandstype. Upload een PNG- of JPEG-afbeelding.",
         "clipboardCopyFailed": "Kopiëren naar klembord mislukt",
         "noQRCodeFound": "Geen QR-code gevonden in de afbeelding.",
         "canvasNotFound": "Canvas-element niet gevonden",
-        "qrComponentNotFound": "QR-code component niet gevonden"
+        "qrComponentNotFound": "QR-code component niet gevonden",
+        "invalidIconFile": "Ongeldig icoonbestand. Upload een PNG-, JPEG- of SVG-afbeelding."
     }
 }

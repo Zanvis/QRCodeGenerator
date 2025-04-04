@@ -15,13 +15,27 @@
         "scanned": "已扫描",
         "reuse": "重复使用",
         "clearHistory": "清除历史记录",
-        "historyButton": "历史"
+        "historyButton": "历史",
+        "uploadIcon": "上传图标放置在二维码中心",
+        "iconSizeLabel": "图标大小：",
+        "addIcon": "添加图标",
+        "changeIcon": "更改图标",
+        "removeIcon": "删除图标",
+        "hideIconOptions": "隐藏图标选项",
+        "addLogoIcon": "添加标志/图标",
+        "selectLogoIcon": "选择标志/图标",
+        "remove": "删除",
+        "clickToUpload": "点击上传图片",
+        "preview": "预览：",
+        "iconSizeNote": "注意：图标不应过大，以保持二维码的可扫描性。",
+        "scanQRCode": "扫描二维码"
     },
     "errors": {
         "invalidFile": "文件类型无效。请上传PNG或JPEG图像。",
         "clipboardCopyFailed": "复制到剪贴板失败",
         "noQRCodeFound": "在图像中未找到二维码。",
         "canvasNotFound": "未找到画布元素",
-        "qrComponentNotFound": "未找到二维码组件"
-    }
+        "qrComponentNotFound": "未找到二维码组件",
+        "invalidIconFile": "图标文件无效。请上传PNG、JPEG或SVG图像。"
+    }   
 }
