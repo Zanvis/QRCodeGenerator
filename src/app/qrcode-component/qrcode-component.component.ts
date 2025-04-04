@@ -81,7 +81,6 @@ export class QRCodeComponentComponent implements OnInit {
     { code: 'bn', name: 'বাংলা' }
   ];
   
-  // QR code icon properties
   iconSrc: string | null = null;
   iconWidth: number = 75;
   iconHeight: number = 75;
@@ -98,13 +97,10 @@ export class QRCodeComponentComponent implements OnInit {
     this.isDropdownOpen = false;
   }
   updateIconSize() {
-    // Ensure minimum size
     if (this.iconSize < 20) this.iconSize = 20;
     
-    // Ensure maximum size (to keep QR code scannable)
     if (this.iconSize > 125) this.iconSize = 125;
     
-    // Set both width and height to the same value
     this.iconWidth = this.iconSize;
     this.iconHeight = this.iconSize;
   }
@@ -112,12 +108,32 @@ export class QRCodeComponentComponent implements OnInit {
     const currentLanguage = this.languages.find(lang => lang.code === this.currentLang);
     return currentLanguage ? currentLanguage.name : 'Select Language';
   }
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private translate : TranslateService) {
-    if (isPlatformBrowser(this.platformId)) {
-      this.currentLang = localStorage.getItem('preferredLanguage') || 'en';
-    }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private translate: TranslateService) {
     translate.setDefaultLang('en');
-    translate.use(this.currentLang);
+    this.initializeLanguage();
+  }
+  
+  private initializeLanguage() {
+    if (isPlatformBrowser(this.platformId)) {
+      const savedLang = localStorage.getItem('preferredLanguage');
+      
+      if (savedLang && this.languages.some(lang => lang.code === savedLang)) {
+        this.currentLang = savedLang;
+      } else {
+        const browserLang = navigator.language.split('-')[0].toLowerCase();
+        const supportedLang = this.languages.find(lang => lang.code === browserLang);
+        
+        if (supportedLang) {
+          this.currentLang = browserLang;
+        } else {
+          this.currentLang = 'en';
+        }
+        
+        localStorage.setItem('preferredLanguage', this.currentLang);
+      }
+      
+      this.translate.use(this.currentLang);
+    }
   }
   ngOnInit() {
     this.loadHistoryFromLocalStorage();
@@ -216,7 +232,6 @@ export class QRCodeComponentComponent implements OnInit {
     }
   }
   
-  // New method to handle icon selection
   onIconSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
@@ -224,13 +239,12 @@ export class QRCodeComponentComponent implements OnInit {
     }
   }
 
-  // Process the selected icon file
   handleIconFile(file: File) {
     if (file.type.match(/image\/(png|jpeg|svg\+xml)/)) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.iconSrc = e.target.result;
-        this.iconSize = 75; // Reset to default when new icon is loaded
+        this.iconSize = 75;
         this.iconWidth = this.iconSize;
         this.iconHeight = this.iconSize;
       };
@@ -240,7 +254,6 @@ export class QRCodeComponentComponent implements OnInit {
     }
   }
 
-  // Toggle icon options visibility
   toggleIconOptions() {
     this.showIconOptions = !this.showIconOptions;
     if (!this.showIconOptions) {
@@ -251,18 +264,14 @@ export class QRCodeComponentComponent implements OnInit {
     }
   }
 
-  // Update icon dimensions
   updateIconDimensions() {
-    // Ensure minimum size
     if (this.iconWidth < 20) this.iconWidth = 20;
     if (this.iconHeight < 20) this.iconHeight = 20;
     
-    // Ensure maximum size (to keep QR code scannable)
     if (this.iconWidth > 125) this.iconWidth = 125;
     if (this.iconHeight > 125) this.iconHeight = 125;
   }
 
-  // Remove the current icon
   removeIcon() {
     this.iconSrc = null;
     this.iconSize = 75;
@@ -291,7 +300,7 @@ export class QRCodeComponentComponent implements OnInit {
         id: this.generateUniqueId()
     };
     this.qrCodeHistory.unshift(newItem);
-    // Limit history to last 10 items
+
     this.qrCodeHistory = this.qrCodeHistory.slice(0, 10);
     this.saveHistoryToLocalStorage();
   }
@@ -321,7 +330,7 @@ export class QRCodeComponentComponent implements OnInit {
   reuseHistoryItem(item: QRCodeHistoryItem) {
     this.qrData = item.data;
     if (item.type === 'generated') {
-      // Trigger QR code generation if needed
+      // trigger qr code generation
     } else {
       this.decodedText = item.data;
     }

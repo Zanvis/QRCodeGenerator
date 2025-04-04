@@ -15,13 +15,27 @@
         "scanned": "تم المسح",
         "reuse": "إعادة استخدام",
         "clearHistory": "مسح السجل",
-        "historyButton": "تاريخ"
+        "historyButton": "تاريخ",
+        "uploadIcon": "قم بتحميل رمز لوضعه في وسط رمز الاستجابة السريعة",
+        "iconSizeLabel": "حجم الأيقونة:",
+        "addIcon": "إضافة أيقونة",
+        "changeIcon": "تغيير الأيقونة",
+        "removeIcon": "إزالة الأيقونة",
+        "hideIconOptions": "إخفاء خيارات الأيقونة",
+        "addLogoIcon": "إضافة شعار/أيقونة",
+        "selectLogoIcon": "اختر شعار/أيقونة",
+        "remove": "إزالة",
+        "clickToUpload": "انقر لتحميل صورة",
+        "preview": "معاينة:",
+        "iconSizeNote": "ملاحظة: يجب ألا تكون الأيقونة كبيرة جدًا للحفاظ على إمكانية مسح رمز الاستجابة السريعة.",
+        "scanQRCode": "مسح رمز الاستجابة السريعة"
     },
     "errors": {
         "invalidFile": "نوع الملف غير صالح. يرجى تحميل صورة PNG أو JPEG.",
         "clipboardCopyFailed": "فشل النسخ إلى الحافظة",
         "noQRCodeFound": "لم يتم العثور على رمز الاستجابة السريعة في الصورة.",
         "canvasNotFound": "عنصر اللوحة غير موجود",
-        "qrComponentNotFound": "مكون رمز الاستجابة السريعة غير موجود"
+        "qrComponentNotFound": "مكون رمز الاستجابة السريعة غير موجود",
+        "invalidIconFile": "ملف الأيقونة غير صالح. يرجى تحميل صورة بتنسيق PNG أو JPEG أو SVG."
     }
 }

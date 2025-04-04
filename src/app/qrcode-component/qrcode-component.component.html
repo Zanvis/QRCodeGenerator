@@ -1,6 +1,5 @@
 <section class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen flex items-center justify-center p-4">
     <div class="container mx-auto p-6 max-w-5xl bg-white rounded-xl shadow-xl grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Left Column: QR Generation -->
         <div class="flex flex-col h-full">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-3xl font-bold text-gray-800 mr-4">{{ 'general.title' | translate}}</h2>
@@ -72,28 +71,26 @@
                 </button>
             </div>
 
-            <!-- QR Code Icon Options -->
             <div class="mb-4">
                 <button 
                     (click)="toggleIconOptions()" 
                     class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition duration-300 flex items-center justify-center">
                     <i class="fas fa-image mr-2"></i>
-                    {{ showIconOptions ? 'Hide Icon Options' : 'Add Logo/Icon' }}
+                    {{ showIconOptions ? ('general.hideIconOptions' | translate) : ('general.addLogoIcon' | translate) }}
                 </button>
             </div>
 
-            <!-- Icon Options (conditionally displayed) -->
             <div *ngIf="showIconOptions" class="mb-4 p-4 bg-gray-50 rounded-lg animate-fade-in">
                 <div class="mb-4">
                     <div class="flex justify-between items-center mb-2">
                         <label class="block text-gray-700 font-medium">
-                            Select Logo/Icon
+                            {{ 'general.selectLogoIcon' | translate }}
                         </label>
                         <button *ngIf="iconSrc" 
                             (click)="removeIcon()" 
                             class="text-red-600 hover:text-red-800 transition duration-300">
                             <i class="fas fa-times mr-1"></i>
-                            Remove
+                            {{ 'general.remove' | translate }}
                         </button>
                     </div>
                     <div 
@@ -101,7 +98,7 @@
                         (click)="iconInput.click()">
                         <p class="text-gray-600">
                             <i class="fas fa-cloud-upload-alt text-2xl mb-2"></i><br>
-                            Click to upload image
+                            {{ 'general.clickToUpload' | translate }}
                         </p>
                         <input 
                             #iconInput
@@ -111,17 +108,15 @@
                             class="hidden">
                     </div>
                     
-                    <!-- Preview image if selected -->
                     <div *ngIf="iconSrc" class="mt-4 text-center">
-                        <p class="text-sm text-gray-600 mb-2">Preview:</p>
+                        <p class="text-sm text-gray-600 mb-2">{{ 'general.preview' | translate }}</p>
                         <img [src]="iconSrc" class="max-h-32 mx-auto" alt="QR code center icon">
                     </div>
                 </div>
                 
-                <!-- Single slider for icon size -->
                 <div>
                     <label class="block text-gray-700 font-medium mb-2">
-                        Icon Size: {{ iconSize }}px
+                        {{ 'general.iconSizeLabel' | translate }} {{ iconSize }}px
                     </label>
                     <input 
                         type="range" 
@@ -132,14 +127,13 @@
                         class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
                 </div>
                 <p class="text-xs text-gray-500 mt-2">
-                    Note: Icon should not be too large to keep the QR code scannable.
+                    {{ 'general.iconSizeNote' | translate }}
                 </p>
             </div>
         </div>
 
-        <!-- Right Column: QR Scanning -->
         <div class="flex flex-col h-full">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6">Scan QR Code</h3>
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">{{ 'general.scanQRCode' | translate }}</h3>
             
             <div 
                 class="flex-grow mb-6 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:bg-gray-50 transition duration-300 flex flex-col items-center justify-center"
@@ -177,7 +171,6 @@
         </div>
     </div>
 
-    <!-- Sidebar for History -->
     <div 
         [@sidebarAnimation]="isSidebarOpen ? 'open' : 'closed'"
         class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl p-6 overflow-y-auto transition-all duration-300 z-50">

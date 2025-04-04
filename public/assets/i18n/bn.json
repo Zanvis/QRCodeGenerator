@@ -15,13 +15,27 @@
         "scanned": "স্ক্যান করা হয়েছে",
         "reuse": "পুনঃব্যবহার করুন",
         "clearHistory": "ইতিহাস মুছুন",
-        "historyButton": "ইতিহাস"
+        "historyButton": "ইতিহাস",
+        "uploadIcon": "আপনার QR কোডের কেন্দ্রে রাখার জন্য একটি আইকন আপলোড করুন",
+        "iconSizeLabel": "আইকন আকার:",
+        "addIcon": "আইকন যোগ করুন",
+        "changeIcon": "আইকন পরিবর্তন করুন",
+        "removeIcon": "আইকন সরান",
+        "hideIconOptions": "আইকন বিকল্পগুলি লুকান",
+        "addLogoIcon": "লোগো/আইকন যোগ করুন",
+        "selectLogoIcon": "লোগো/আইকন নির্বাচন করুন",
+        "remove": "সরান",
+        "clickToUpload": "ছবি আপলোড করতে ক্লিক করুন",
+        "preview": "প্রিভিউ:",
+        "iconSizeNote": "নোট: QR কোড স্ক্যান করা যাবে এমন রাখতে আইকন খুব বড় হওয়া উচিত নয়।",
+        "scanQRCode": "QR কোড স্ক্যান করুন"
     },
     "errors": {
         "invalidFile": "অবৈধ ফাইল প্রকার। অনুগ্রহ করে একটি PNG বা JPEG চিত্র আপলোড করুন।",
         "clipboardCopyFailed": "ক্লিপবোর্ডে কপি করতে ব্যর্থ",
         "noQRCodeFound": "চিত্রে কোন QR কোড পাওয়া যায়নি।",
         "canvasNotFound": "ক্যানভাস উপাদান পাওয়া যায়নি",
-        "qrComponentNotFound": "QR কোড উপাদান পাওয়া যায়নি"
+        "qrComponentNotFound": "QR কোড উপাদান পাওয়া যায়নি",
+        "invalidIconFile": "অবৈধ আইকন ফাইল। অনুগ্রহ করে একটি PNG, JPEG, বা SVG চিত্র আপলোড করুন।"
     }
 }
