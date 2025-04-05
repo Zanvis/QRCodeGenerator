@@ -80,13 +80,14 @@
                 </button>
             </div>
 
-            <div *ngIf="showIconOptions" class="mb-4 p-4 bg-gray-50 rounded-lg animate-fade-in">
+            <div *ngIf="showIconOptions" [@slideInOut] class="mb-4 p-4 bg-gray-50 rounded-lg">
                 <div class="mb-4">
                     <div class="flex justify-between items-center mb-2">
                         <label class="block text-gray-700 font-medium">
                             {{ 'general.selectLogoIcon' | translate }}
                         </label>
                         <button *ngIf="iconSrc" 
+                            [@fadeIn]
                             (click)="removeIcon()" 
                             class="text-red-600 hover:text-red-800 transition duration-300">
                             <i class="fas fa-times mr-1"></i>
@@ -94,6 +95,7 @@
                         </button>
                     </div>
                     <div 
+                        [@fadeIn]
                         class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:bg-gray-100 transition duration-300"
                         (click)="iconInput.click()">
                         <p class="text-gray-600">
@@ -108,13 +110,13 @@
                             class="hidden">
                     </div>
                     
-                    <div *ngIf="iconSrc" class="mt-4 text-center">
+                    <div *ngIf="iconSrc" [@slideInOut] class="mt-4 text-center">
                         <p class="text-sm text-gray-600 mb-2">{{ 'general.preview' | translate }}</p>
-                        <img [src]="iconSrc" class="max-h-32 mx-auto" alt="QR code center icon">
+                        <img [src]="iconSrc" [style.maxHeight.px]="iconSize" class="mx-auto" alt="QR code center icon">
                     </div>
                 </div>
                 
-                <div>
+                <div [@fadeIn]>
                     <label class="block text-gray-700 font-medium mb-2">
                         {{ 'general.iconSizeLabel' | translate }} {{ iconSize }}px
                     </label>

@@ -46,6 +46,34 @@ interface QRCodeHistoryItem {
         animate('300ms ease-in-out')
       ]),
     ]),
+    trigger('fadeIn', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition(':enter', [
+        animate('300ms ease-in', style({
+          opacity: 1
+        }))
+      ]),
+    ]),
+    trigger('slideInOut', [
+      state('void', style({
+        transform: 'translateY(-20px)',
+        opacity: 0
+      })),
+      transition(':enter', [
+        animate('400ms ease-out', style({
+          transform: 'translateY(0)',
+          opacity: 1
+        }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-in', style({
+          transform: 'translateY(-20px)',
+          opacity: 0
+        }))
+      ])
+    ])
   ]
 })
 
